@@ -1,0 +1,326 @@
+/******************************
+variables
+******************************/
+$navPlava: #09192c; 
+$tamnoPlava: #0b193c;
+$pink: #f91257;
+$bela: white;
+$svetloSiva: #f8f8f8;
+$fontColor: #0b193c;
+$violet: #383c6e;
+$font: 16px;
+$padding: 80px 0;
+$fontFamily: 'Montserrat', sans-serif;
+$transition: .3s ease;
+/******************************
+basic styles
+******************************/
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: $fontFamily;
+    font-size: $font;
+    color: $fontColor;
+    line-height: 1.5;
+}
+a {
+    color: $bela;
+    text-decoration: none;
+    &:hover {
+        color: $pink;
+        transition: $transition;
+
+    }
+}
+ul {
+    list-style: none;
+}
+.logo {
+    font-size: 2rem;
+    font-weight: 600;
+    span {
+        color: $pink;
+    }
+}
+.container {
+    width: 80%;
+    margin: auto;
+}
+/******************************
+mixins
+******************************/
+@mixin flex($justufy,$align,$direction) {
+    display: flex;
+    justify-content: $justufy;
+    align-items: $align;
+    flex-direction: $direction;
+    flex-wrap: wrap;
+}
+@mixin btn {
+    padding: 20px 40px;
+    background: $pink;
+    color: $bela;
+    border-radius: 40px;
+    border: none;
+    text-transform: uppercase;
+    font-size: 1rem;
+    letter-spacing: 2px;
+    margin-top: 20px;
+    &:hover {
+        background: $violet;
+        transition: $transition;
+    }
+}
+/******************************
+nav
+******************************/
+nav {
+    background: $navPlava;
+    @include flex(space-between,center,row);
+    padding: 30px 60px;
+    @media (max-width: 767px) {
+        @include flex(center, center, column)
+    }
+    & > a {
+        @extend .logo;
+    }
+    ul {
+        @include flex(space-between,center,row);
+        li {
+            margin-left: 50px;
+            @media (max-width: 767px) {
+                margin: 10px;
+                margin-left: 0px;
+            }
+        }
+    }
+}
+/******************************
+mainHeader
+******************************/
+.mainHeader {
+    color: $bela;
+    background: $tamnoPlava;
+    padding: 30px 60px;
+    @include flex(space-between,center,row);
+    div {
+        flex: 0 0 45%;
+        @media (max-width: 767px) {
+            flex: 0 0 100%;
+        }
+        h1 {
+            font-size: 3rem;
+            span {
+                color: $pink;
+            }
+            @media (max-width: 767px) {
+                font-size: 2rem;
+            }
+        }
+        button {
+            @include btn;
+        }
+        img {
+            width: 100%;
+        }
+    }
+}
+/******************************
+unlimited
+******************************/
+.unlimited {
+    padding: $padding;
+    @include flex(space-between, center, row);
+    div {
+        flex: 0 0 48%;
+        @media (max-width: 767px) {
+            flex: 0 0 100%;
+        }
+        h2 {
+            font-size: 3rem;
+            line-height: 1;
+            @media (max-width: 767px) {
+                font-size: 2rem;
+                margin-bottom: 20px;
+            }
+        }
+        button {
+            @include btn;
+        }
+    }
+}
+
+
+/******************************
+hiwHeader
+******************************/
+.hiwHeader {
+    padding: $padding;
+    background: $tamnoPlava;
+    color: $bela;
+    h2 {
+        font-size: 3rem;
+        @media (max-width: 767px) {
+            font-size: 2.5rem;
+        }
+    }
+    article {
+        @include flex(space-between, center, row);
+        div {
+            flex: 0 0 30%;
+            @media (max-width: 767px) {
+                flex: 0 0 100%;
+                margin-bottom: 50px;
+            }
+            i {
+                font-size: 4rem;
+                margin: 28px 0;
+                color: $pink;
+            }
+            h3 {
+                font-size: 1.8rem;
+                margin-bottom: 20px;
+            }
+        }
+    }
+}
+/******************************
+concept
+******************************/
+.concept {
+    padding: $padding;
+    article:first-child {
+        @include flex(space-between, flex-start, row);
+        h2 {
+            flex: 0 0 48%;
+            font-size: 3rem;
+            line-height: 1.1;
+            @media (max-width: 767px) {
+                flex: 0 0 100%;
+                margin-bottom: 30px;
+                font-size: 2.5rem;
+            }
+        }
+        p {
+            flex: 0 0 48%;
+            @media (max-width: 767px) {
+                flex: 0 0 100%;
+            }
+        }        
+    }
+    article:last-child {
+        padding-top: 40px;
+        text-align: center;
+        @include flex(space-between, center, row);
+        div {
+            flex: 0 0 22%;
+            @media (max-width: 767px) {
+                flex: 0 0 45%;
+                margin-bottom: 30px;
+            }
+            img {
+                width: 100%;
+                border-radius: 40px;
+            }
+        }
+    }
+}
+/******************************
+subscriptions
+******************************/
+.subscriptions {
+    background: $tamnoPlava;
+    padding: $padding;
+    color: $bela;
+    article {
+        @include flex(space-between, center, row);
+        div:first-child {
+            flex: 0 0 49%;
+            @media (max-width: 767px) {
+                flex: 0 0 100%;
+            }
+            h2 {
+                font-size: 2.2rem;
+            }
+            h4 {
+                color: $pink;
+                font-size: 1.5rem;
+                margin: 10px 0;
+            }
+            button {
+                @include btn();
+            }
+        }
+        div:last-child {
+            flex: 0 0 49%;
+            border: none;
+            border-radius: 40px;
+            background: rgba($svetloSiva,.1);
+            padding: 30px 0;
+            @include flex(center, center, row);
+            @media (max-width: 767px) {
+                flex: 1;
+                margin-top: 60px;
+            }
+            ul {
+                line-height: 3;
+               li::before {
+                    font-family: "Font Awesome 5 Free";
+                    content: "\f058";
+                    color: $pink;
+                    i {
+                        font-size: .9rem;
+                        margin: 28px 0;
+                        color: $pink;
+                    }
+               }
+            }
+        }
+    }
+}
+/******************************
+artists
+******************************/
+.artists {
+    @extend .concept;
+    article:last-child {
+        div {
+            flex: 0 0 15%;
+            @media (max-width: 767px) {
+                flex: 0 0 100%;
+            }
+            img {
+                border-radius: 50%;
+                @media (max-width: 767px) {
+                    width: 60%;
+                }
+            }
+        }
+    }
+}
+/******************************
+footer
+******************************/
+footer {
+    padding: $padding;
+    background: $navPlava;
+    @include flex(center,center,column);
+    & > a {
+        @extend .logo;
+    }
+    p {
+        color: $bela;
+        font-size: .8rem;
+        padding: 20px 0;
+    }
+    div {
+        margin-top: 10px;
+        i {
+            padding: 0 20px;
+            font-size: 1.2rem;
+        }
+    }
+}

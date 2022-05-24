@@ -1,0 +1,317 @@
+/***********
+variables
+***********/
+$navPlava: #09192c;
+$tamnoPlava: #0b193c;
+$pink: #f91257;
+$bela: #fff;
+$svetloSiva: #f8f8f8;
+$fontColor: #0b193c;
+$violent: #383c63;
+$font: 16px;
+$padding: 80px 0;
+$fontFamily: 'Montserrat', sans-serif;
+$transition: .3s ease;
+/***********
+mixins
+***********/
+@mixin flex($justify,$align,$direction){
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: $justify;
+    align-items: $align;
+    flex-direction: $direction;
+}
+@mixin btn{
+    padding: 20px 40px;
+    font-size: 1rem;
+    background: $pink;
+    color: $bela;
+    border: none;
+    cursor: pointer;
+    text-transform: uppercase;
+    margin-top: 20px;
+    border-radius: 40px;
+    letter-spacing: 2px;
+    &:hover{
+        background: $violent;
+        transition: $transition;
+    }
+
+}
+
+/***********
+basic styles
+***********/
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font: $font;
+    color: $fontColor;
+    font-family: $fontFamily;
+    line-height: 1.5;
+}
+ul {
+    list-style: none;
+}
+a{
+    text-decoration: none;
+    color: $bela;
+    &:hover{
+        color: $pink;
+        transition: $transition;
+    }
+}
+h2{
+    font-size: 3rem;
+    line-height: 1.1;
+    @media(max-width:767px){
+        font-size: 2rem;
+    }
+}
+.logo{
+    font-size: 2rem;
+    font-weight: 600;
+    span{
+        color: $pink;
+    }
+}
+.container{
+    width: 80%;
+    margin: auto;
+}
+/***********
+nav style
+***********/
+nav{
+    background: $navPlava;
+    @include flex(space-between,center,row);
+    padding: 30px 60px;
+    @media(max-width:767px){
+        @include flex(center,center,column);
+        padding: 20px;
+    }
+    & > a{
+        @extend .logo ;       
+    }
+    ul{
+        @include flex(space-between,center,row);
+        li{
+            margin-left: 50px;
+            @media(max-width:767px){
+                margin-left: 10px;
+            }
+        }
+    }   
+}
+
+/***********
+footer style
+***********/
+footer{
+    background: $navPlava;
+    text-align: center;
+    padding: $padding;
+    p{
+        color: $bela;
+        padding: 15px 0;
+        font-size: 0.8rem;
+    }
+    a{
+        margin: 0 15px;
+        font-size: 1.2rem;
+    }
+}
+/***********
+mainHeader style
+***********/    
+.mainHeader{
+    background: $tamnoPlava;
+    color: $bela;
+    padding: 0px 60px;
+    @include flex(space-between,center,row);
+    @media(max-width:767px){
+        padding:20px;
+    }
+    div{
+        flex: 0 0 45%;
+        @media(max-width:767px){
+            flex: 0 0 100%;
+        }
+     
+        img{
+            width: 100%;
+            padding: 40px 0;
+             
+        }
+        h1{
+            font-size: 4rem;
+            span{
+                color: $pink;
+            }
+            @media(max-width:767px){
+                font-size: 2rem;
+            }
+        }
+        button{
+            @include btn;
+        }
+       
+    }
+}
+/***********
+unlimited style
+***********/ 
+.unlimited{
+    padding: $padding;
+    @include flex(space-between,center,row);
+    article{
+        flex: 0 0 48%;
+        @media(max-width:767px){
+            flex: 0 0 100%;
+        }
+        button{
+            @include btn;
+        }
+    }
+}
+/***********
+hivHeader
+***********/
+.hivHeader{
+    padding: $padding;
+    background: $tamnoPlava;
+    color: $bela;
+    article{
+        @include flex(space-between,center,row);
+        div{
+            flex: 0 0 30%;
+            @media(max-width:767px){
+                flex: 0 0 100%;
+            }
+            i{
+                color: $pink;
+                font-size: 4rem;
+                margin: 30px 0;
+            }
+            h3{
+                margin-bottom: 30px;
+                font-size: 1.7rem;
+            }
+            
+        }  
+    }
+}
+/***********
+artist
+***********/
+.artist{
+    padding: $padding;
+    article:first-child{
+        
+        @include flex(space-between,flex-start,row);
+        h2{
+            flex: 0 0 48%;
+            @media(max-width:767px){
+                flex: 0 0 100%;
+            }
+        }
+        p{
+            flex: 0 0 48%;
+            @media(max-width:767px){
+                flex: 0 0 100%;
+            }
+        }
+    }
+    article:last-child{
+        margin-top: 40px;
+        @include flex(space-between,flex-start,row);
+        div{
+            flex: 0 0 22%;
+            text-align: center;
+            @media(max-width:767px){
+                flex: 0 0 100%;
+            }
+            img{
+                width: 100%;
+                border-radius: 40px;
+            }
+        }
+    }
+
+}
+/***********
+concept
+***********/
+.concept{
+    @extend .artist;
+    article:last-child{
+        div{
+            flex: 0 0 15%;
+            @media(max-width:767px){
+                flex: 0 0 100%;
+                margin-bottom: 40px;
+            }
+            img{
+                border-radius: 50%;
+                @media(max-width:767px){
+                    width: 80%;
+                }
+            }
+        }
+    }
+
+}
+/***********
+subHeader
+***********/
+.subHeader{
+    background: $tamnoPlava;
+    padding: $padding;
+    color: $bela;
+    article{
+        @include flex(space-between,flex-start,row);
+        div:first-child{
+            flex: 0  0 48%;
+            @media(max-width:767px){
+                flex: 0 0 100%;
+            }
+            h4{
+                color:$pink;
+                font-size: 1.8rem;
+                padding: 15px 0;
+            }
+            button{
+                @include btn;
+                
+            }
+        }
+        div:last-child{
+            flex: 0 0 48%;
+            background: rgba($bela,0.1);
+            border-radius: 30px;      
+            padding: 30px;
+            @include flex(center,center,row);
+            @media(max-width:767px){
+                flex: 0 0 100%;
+                margin-top: 30px;
+            }
+            ul{
+                // Na ovaj nacin dodajemo veci broj istih ikonica
+                line-height: 3;
+                li::before{
+                    font-family: "Font Awesome 5 free";
+                    content: "\f058";
+                    margin-right: 10px;
+                    color: $pink;
+                }
+            }
+        }
+    
+      
+    }
+}
